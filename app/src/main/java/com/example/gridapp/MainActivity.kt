@@ -44,21 +44,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CardGridApp() {
-    // Используем rememberSaveable для сохранения списка при перевороте экрана
+
     var cardList by rememberSaveable { mutableStateOf((0..10).toList()) }
 
-    // Определяем количество колонок в зависимости от ориентации экрана
+
     val columns = if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT) 3 else 4
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // Grid с карточками с отступом для кнопки
+     
         LazyVerticalGrid(
             columns = GridCells.Fixed(columns),
             contentPadding = PaddingValues(
                 start = 16.dp,
                 top = 16.dp,
                 end = 16.dp,
-                bottom = 80.dp // отступ снизу для кнопки
+                bottom = 80.dp
             ),
             modifier = Modifier.fillMaxSize()
         ) {
@@ -67,7 +67,7 @@ fun CardGridApp() {
             }
         }
 
-        // FloatingActionButton, не перекрывающая карточки
+
         FloatingActionButton(
             onClick = { cardList = cardList + (cardList.size) },
             modifier = Modifier
